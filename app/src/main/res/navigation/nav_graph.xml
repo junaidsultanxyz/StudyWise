@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.junaid.studywise.fragments.application.HomeFragment"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/nav_sessions"
+        android:name="com.junaid.studywise.fragments.application.SessionFragment"
+        android:label="Sessions" />
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.junaid.studywise.fragments.application.ChatFragment"
+        android:label="Chat" />
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.junaid.studywise.fragments.application.NotesFragment"
+        android:label="Notes"/>
+    <fragment
+        android:id="@+id/nav_notes_edit"
+        android:name="com.junaid.studywise.fragments.application.NotesEditFragment"
+        android:label="Edit Notes"/>
+</navigation>

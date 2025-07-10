@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.junaid.studywise.custom_adapters.NotesAdapter;
 import com.junaid.studywise.model.Note;
@@ -94,9 +95,14 @@ public class NotesFragment extends Fragment {
                 // Handle note click - open note details
                 Toast.makeText(getContext(), "Clicked: " + selectedNote.getTitle(), Toast.LENGTH_SHORT).show();
 
-                // TODO: Navigate to note details fragment or activity
-                // You can use Navigation Component or FragmentManager
-                // Navigation.findNavController(view).navigate(R.id.action_notesFragment_to_noteDetailsFragment);
+                // Navigate to note edit fragment using Navigation Component
+                Bundle args = new Bundle();
+                args.putInt("noteId", selectedNote.getId());
+                args.putString("noteTitle", selectedNote.getTitle());
+                args.putString("noteContent", selectedNote.getContent());
+                
+                androidx.navigation.Navigation.findNavController(view)
+                    .navigate(R.id.action_notes_to_notes_edit, args);
 
                 // Or if using FragmentManager:
                 // FragmentManager fragmentManager = getParentFragmentManager();
@@ -129,8 +135,14 @@ public class NotesFragment extends Fragment {
                 // Handle add new note
                 Toast.makeText(getContext(), "Add new note", Toast.LENGTH_SHORT).show();
 
-                // TODO: Navigate to add note fragment or activity
-                // Navigation.findNavController(v).navigate(R.id.action_notesFragment_to_addNoteFragment);
+                // Navigate to note edit fragment for creating a new note
+                Bundle args = new Bundle();
+                args.putInt("noteId", -1); // -1 indicates new note
+                args.putString("noteTitle", "");
+                args.putString("noteContent", "");
+                
+                Navigation.findNavController(v)
+                    .navigate(R.id.action_notes_to_notes_edit, args);
 
                 // Or if using FragmentManager:
                 // FragmentManager fragmentManager = getParentFragmentManager();

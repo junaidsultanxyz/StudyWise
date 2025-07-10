@@ -11,9 +11,10 @@
         android:id="@+id/topToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@android:color/white"
         android:theme="?attr/actionBarTheme"
-        android:title="Study Helper" />
+        android:title="Study Helper"
+        android:visibility="visible" />
 
     <!-- Fragment Container -->
     <androidx.fragment.app.FragmentContainerView

@@ -2,19 +2,15 @@ package com.junaid.studywise;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.junaid.studywise.fragments.application.NotesFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,17 +32,39 @@ public class MainActivity extends AppCompatActivity {
         navController = navHostFragment.getNavController();
 
         NavigationUI.setupWithNavController(bottomNavigation, navController);
-        NavigationUI.setupActionBarWithNavController(this, navController);
+        
+        // Hide the default toolbar for all fragments - use custom toolbars in fragments
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        NotesFragment notesFragment = NotesFragment.newInstance();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, notesFragment)
-                .commit();
+        // Remove manual fragment transaction - let NavController handle it
+        // The startDestination in nav_graph.xml will handle the initial fragment
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         return navController.navigateUp() || super.onSupportNavigateUp();
+    }
+
+    public void switchMainFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment);
+
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+
+        transaction.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Clean up session timer when app is truly finished
+        if (isFinishing()) {
+            com.junaid.studywise.fragments.application.SessionFragment.cleanupTimer();
+        }
     }
 }

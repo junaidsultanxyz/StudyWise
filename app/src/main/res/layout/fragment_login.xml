@@ -147,7 +147,7 @@
             android:paddingTop="12dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_sign_up"
+                android:id="@+id/btn_log_in"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/button_primary"
@@ -170,7 +170,7 @@
             android:paddingTop="12dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_google_signup"
+                android:id="@+id/btn_google_log_in"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/button_secondary"
@@ -202,7 +202,7 @@
 
         <!-- Sign In link -->
         <TextView
-            android:id="@+id/tv_sign_in"
+            android:id="@+id/tv_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"

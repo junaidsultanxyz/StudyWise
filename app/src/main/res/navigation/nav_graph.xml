@@ -8,20 +8,47 @@
         android:id="@+id/nav_home"
         android:name="com.junaid.studywise.fragments.application.HomeFragment"
         android:label="Home" />
+    
     <fragment
         android:id="@+id/nav_sessions"
         android:name="com.junaid.studywise.fragments.application.SessionFragment"
         android:label="Sessions" />
+    
     <fragment
         android:id="@+id/nav_chat"
         android:name="com.junaid.studywise.fragments.application.ChatFragment"
         android:label="Chat" />
+    
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.junaid.studywise.fragments.application.ProfileFragment"
+        android:label="Profile" />
+    
     <fragment
         android:id="@+id/nav_notes"
         android:name="com.junaid.studywise.fragments.application.NotesFragment"
-        android:label="Notes"/>
+        android:label="Notes">
+        <action
+            android:id="@+id/action_notes_to_notes_edit"
+            app:destination="@id/nav_notes_edit" />
+    </fragment>
+    
     <fragment
         android:id="@+id/nav_notes_edit"
         android:name="com.junaid.studywise.fragments.application.NotesEditFragment"
-        android:label="Edit Notes"/>
+        android:label="Edit Notes">
+        <argument
+            android:name="noteId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="noteTitle"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="noteContent"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+    
 </navigation>

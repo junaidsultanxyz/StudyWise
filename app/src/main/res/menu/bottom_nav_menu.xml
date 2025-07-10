@@ -3,12 +3,15 @@
         android:icon="@drawable/ic_home_filled"
         android:title="Home" />
     <item android:id="@+id/nav_sessions"
+        android:icon="@drawable/ic_add"
+        android:title="Session" />
+    <item android:id="@+id/nav_notes"
         android:icon="@drawable/ic_note"
-        android:title="Sessions" />
-    <item android:id="@+id/nav_materials"
-        android:icon="@drawable/ic_bookmark"
-        android:title="Materials" />
+        android:title="Notes" />
     <item android:id="@+id/nav_chat"
         android:icon="@drawable/ic_add"
         android:title="Chat" />
+    <item android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
 </menu>
